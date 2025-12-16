@@ -102,7 +102,7 @@ def main() -> int:
     pytest_args.append("tests/")
 
     # Run pytest with constructed arguments
-    exit_code: int | pytest.ExitCode = pytest.main(pytest_args)
+    exit_code: pytest.ExitCode = pytest.main(pytest_args)
 
     # Display coverage information
     if exit_code == 0:

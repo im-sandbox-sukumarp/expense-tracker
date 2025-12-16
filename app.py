@@ -106,7 +106,7 @@ def index() -> str:
         str: Rendered HTML template for the index page containing the list
             of expenses and total amount.
     """
-    expenses: list[Any] = Expense.query.order_by(Expense.date.desc()).all()
+    expenses: list[Expense] = Expense.query.order_by(Expense.date.desc()).all()
     total_amount: float = sum(expense.amount for expense in expenses)
     return render_template('index.html', expenses=expenses, total_amount=total_amount)
 
@@ -241,7 +241,7 @@ def categories() -> str:
         str: Rendered HTML template displaying category totals
             and visualization.
     """
-    expenses: list[Any] = Expense.query.all()
+    expenses: list[Expense] = Expense.query.all()
     categories_dict: dict[str, float] = {}
 
     for expense in expenses:
@@ -278,7 +278,7 @@ def api_expenses() -> Response:
             }
         ]
     """
-    expenses: list[Any] = Expense.query.order_by(Expense.date.desc()).all()
+    expenses: list[Expense] = Expense.query.order_by(Expense.date.desc()).all()
     result: list[dict[str, Any]] = []
 
     for expense in expenses:
