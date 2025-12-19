@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>im-sandbox-sukumarp.ExpenseTracker.Services</PackageId>
+    <Version>1.1.0</Version>
+    <Authors>im-sandbox-sukumarp</Authors>
+    <Company>im-sandbox-sukumarp</Company>
+    <Description>Service layer implementations for the Expense Tracker application</Description>
+    <PackageTags>expense;tracker;finance;services</PackageTags>
+    <RepositoryUrl>https://github.com/im-sandbox-sukumarp/expense-tracker</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExpenseTracker.Core\ExpenseTracker.Core.csproj" />
+  </ItemGroup>
+
+</Project>

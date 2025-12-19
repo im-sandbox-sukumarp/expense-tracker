@@ -1,0 +1,34 @@
+{
+  "name": "@im-sandbox-sukumarp/expense-validators",
+  "version": "1.2.0",
+  "description": "Validation utilities for expense data",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "expense",
+    "validation",
+    "validators",
+    "finance"
+  ],
+  "author": "im-sandbox-sukumarp",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/im-sandbox-sukumarp/expense-tracker.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "@im-sandbox-sukumarp/expense-utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
