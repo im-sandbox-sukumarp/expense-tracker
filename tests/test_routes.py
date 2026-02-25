@@ -94,6 +94,28 @@ def test_categories_route(client):
     assert b'Food' in response.data
     assert b'Entertainment' in response.data
 
+def test_categories_aggregation(client, app):
+    """Test that multiple expenses in the same category are aggregated correctly."""
+    # Add a second Food expense so the aggregation branch (category already exists) is exercised
+    client.post('/add', data={
+        'title': 'Restaurant',
+        'amount': '45.00',
+        'category': 'Food',
+        'date': '2025-05-12',
+        'description': 'Dinner out'
+    })
+
+    response = client.get('/categories')
+    assert response.status_code == 200
+    # The Food category should now reflect 150.75 + 45.00 = 195.75
+    assert b'Food' in response.data
+
+    with app.app_context():
+        from app import Expense
+        food_expenses = Expense.query.filter_by(category='Food').all()
+        total = sum(e.amount for e in food_expenses)
+        assert total == 150.75 + 45.00
+
 def test_api_expenses(client):
     """Test the API endpoint for expenses."""
     response = client.get('/api/expenses')
